@@ -1,4 +1,10 @@
-// lengths.js：量长度（基线：一律给零）
+// lengths.js：量长度（去首尾空白后按字符个数算）
 export function lengthOf(word) {
-  return 0;
+  const trimmed = String(word).trim();
+  if (trimmed.length === 0) {
+    const error = new Error("E_EMPTY_WORDS: word is empty after trimming");
+    error.code = "E_EMPTY_WORDS";
+    throw error;
+  }
+  return trimmed.length;
 }
